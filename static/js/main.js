@@ -331,18 +331,14 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(payload)
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
+            return response.json().then(data => {
+                if (!response.ok) {
+                    throw new Error(data.error || `HTTP error! status: ${response.status}`);
+                }
+                return data;
+            });
         })
         .then(data => {
-            if (data.error) {
-                assistantText.textContent = `Error: ${data.error}`;
-                setUIState("ready");
-                return;
-            }
-
             // Save user query to history now that we successfully got a response
             chatHistory.push({ role: "user", text: queryText });
 
@@ -360,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error("Error communicating with backend:", error);
-            assistantText.textContent = "Error: Could not connect to the backend server.";
+            assistantText.textContent = `Error: ${error.message}`;
             setUIState("ready");
         });
     }
