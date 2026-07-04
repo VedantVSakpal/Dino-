@@ -48,3 +48,4 @@ python app.py
 ```
 
 Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your web browser (Chrome/Edge is recommended for mic permissions), click the microphone, and start speaking!
+
