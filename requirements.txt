@@ -1,0 +1,7 @@
+Flask==3.0.3
+Flask-CORS==4.0.1
+python-dotenv==1.0.1
+google-genai>=1.0.0
+kokoro-onnx==0.3.9
+onnxruntime>=1.18.0
+soundfile==0.12.1

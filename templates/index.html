@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA - AI Voice Assistant</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="glass-bg-elements">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="assistant-container">
+        <!-- Header -->
+        <header class="assistant-header">
+            <div class="brand">
+                <i class="fa-solid fa-wand-magic-sparkles brand-icon"></i>
+                <h1>AURA</h1>
+            </div>
+            <div class="status-indicator">
+                <span class="status-dot" id="status-dot"></span>
+                <span id="status-text">Ready</span>
+            </div>
+        </header>
+
+        <!-- Waveform/Visualizer Section -->
+        <main class="visualizer-section">
+            <div class="waveform-container" id="waveform-container">
+                <!-- Visual waveform bars representing state -->
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+        </main>
+
+        <!-- Dialogue Transcripts -->
+        <section class="transcript-section">
+            <div class="transcript-card user-transcript" id="user-transcript-card">
+                <div class="card-header">
+                    <span class="speaker-tag"><i class="fa-solid fa-circle-user"></i> You</span>
+                </div>
+                <p id="user-text">Click the microphone and start speaking...</p>
+            </div>
+            
+            <div class="transcript-card assistant-transcript" id="assistant-transcript-card">
+                <div class="card-header">
+                    <span class="speaker-tag"><i class="fa-solid fa-sparkles"></i> Aura</span>
+                </div>
+                <p id="assistant-text">Waiting for your query...</p>
+            </div>
+        </section>
+
+        <!-- Controls Section -->
+        <section class="controls-section">
+            <button class="mic-button" id="mic-btn" title="Click to speak">
+                <i class="fa-solid fa-microphone" id="mic-icon"></i>
+            </button>
+            
+            <div class="quick-controls">
+                <button class="control-btn" id="stop-btn" title="Stop Playback" disabled>
+                    <i class="fa-solid fa-stop"></i>
+                </button>
+                <button class="control-btn" id="settings-toggle-btn" title="Settings">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Settings Panel -->
+        <section class="settings-panel hidden" id="settings-panel">
+            <h3>Assistant Configuration</h3>
+            
+            <div class="setting-group">
+                <label for="model-select">Gemini Model</label>
+                <select id="model-select">
+                    <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (Fast)</option>
+                    <option value="gemini-2.5-pro">Gemini 2.5 Pro (Analytical)</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label for="voice-select">TTS Voice</label>
+                <select id="voice-select">
+                    <option value="af_sarah" selected>Sarah (Female - Default)</option>
+                    <option value="af_heart">Heart (Female - Soft)</option>
+                    <option value="af_bella">Bella (Female - Clear)</option>
+                    <option value="am_adam">Adam (Male - Warm)</option>
+                    <option value="am_michael">Michael (Male - Deep)</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <div class="slider-header">
+                    <label for="speed-slider">Speech Speed</label>
+                    <span id="speed-val">1.0x</span>
+                </div>
+                <input type="range" id="speed-slider" min="0.5" max="2.0" step="0.1" value="1.0">
+            </div>
+        </section>
+
+        <footer class="assistant-footer">
+            <p>Knowledge Base Context: <strong>modi.txt</strong> | Powered by Gemini 2.5 & Kokoro ONNX</p>
+        </footer>
+    </div>
+
+    <!-- Hidden HTML5 Audio Element -->
+    <audio id="audio-player" style="display: none;"></audio>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

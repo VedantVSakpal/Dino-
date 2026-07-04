@@ -1,0 +1,15 @@
+# Python environment files
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Local configuration / API keys
+.env
+
+# Large model binaries (download_models.py will fetch these locally)
+*.onnx
+*.bin
+
+# Generated speech cache files
+static/audio/*.wav
